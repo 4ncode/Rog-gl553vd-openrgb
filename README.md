@@ -1,4 +1,4 @@
-ROG-GL553VD-OpenRGB — Project Status
+#ROG-GL553VD-OpenRGB — Project Status
 Project Completed
 
 Development work on ROG-GL553VD-OpenRGB has been completed.
