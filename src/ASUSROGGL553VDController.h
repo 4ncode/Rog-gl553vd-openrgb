@@ -15,11 +15,10 @@ extern "C" {
 /**
  * ASUS ROG Strix GL553VD RGB Keyboard Controller
  * 
- * Sterownik dla klawiatury RGB w laptopach ASUS ROG Strix GL553VD
- * Bazuje na reverse engineeringu protokołu USB HID
+ * Driver for the RGB keyboard on ASUS ROG Strix GL553VD laptops
+ * Based on reverse engineering of the USB HID protocol
  * 
- * Autor: [4ncode]
- * Licencja: GPL v2
+ * Author: [4ncode]
  */
 
 
