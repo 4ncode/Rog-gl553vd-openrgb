@@ -10,7 +10,7 @@ int main()
     std::cout << "=== ASUS ROG GL553VD RGB Test ===" << std::endl;
     
     if (hid_init() != 0) {
-        std::cerr << "Blad inicjalizacji hidapi" << std::endl;
+        std::cerr << "Hidapi initialization error" << std::endl;
         return 1;
     }
     
@@ -20,47 +20,47 @@ int main()
     );
     
     if (!devs) {
-        std::cerr << "Nie znaleziono urzadzenia!" << std::endl;
+        std::cerr << "No device found!"No device found! << std::endl;
         hid_exit();
         return 1;
     }
     
     hid_device* handle = hid_open_path(devs->path);
     if (!handle) {
-        std::cerr << "Nie mozna otworzyc urzadzenia" << std::endl;
+        std::cerr << "The device cannot be opened" << std::endl;
         hid_free_enumeration(devs);
         hid_exit();
         return 1;
     }
     
-    std::cout << "Znaleziono: " << devs->manufacturer_string 
+    std::cout << "Found: " << devs->manufacturer_string 
               << " " << devs->product_string << std::endl;
     
     ASUSROGGL553VDController* controller = 
         new ASUSROGGL553VDController(handle, devs->path, devs->product_id);
     
-    std::cout << "Inicjalizacja klawiatury..." << std::endl;
+    std::cout << "Initializing the keyboard..." << std::endl;
     controller->Initialize();
     sleep(1);
     
-    std::cout << "Czerwony (3 sekundy)..." << std::endl;
+    std::cout << "Red (3 seconds)..." << std::endl;
     controller->SetColor(255, 0, 0);
     sleep(3);
     
-    std::cout << "Zielony (3 sekundy)..." << std::endl;
+    std::cout << "Green (3 seconds)..." << std::endl;
     controller->SetColor(0, 255, 0);
     sleep(3);
     
-    std::cout << "Niebieski (3 sekundy)..." << std::endl;
+    std::cout << "Blue (3 seconds)..." << std::endl;
     controller->SetColor(0, 0, 255);
     sleep(3);
     
-    std::cout << "Wylaczanie (czarny)..." << std::endl;
+    std::cout << "Power off (black)..." << std::endl;
     controller->SetColor(0, 0, 0);
     
-    std::cout << "Test zakonczony!" << std::endl;
+    std::cout << "The test is over!" << std::endl;
     
-    // Zamykamy
+    // Close
     delete controller;
     hid_close(handle);
     hid_free_enumeration(devs);
